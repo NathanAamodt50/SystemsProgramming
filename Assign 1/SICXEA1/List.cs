@@ -12,8 +12,8 @@ namespace SICXEA1
         public Symbol[] Table;
         public List()
         {
-
-            Table = new Symbol[CountLinesReader()];
+            string file = "Symbols.dat";
+            Table = new Symbol[CountLinesReader(file)];
             InitializeTable();
             CreateList();
         }
@@ -29,10 +29,10 @@ namespace SICXEA1
                 Table[c] = new Symbol();
             }
         }
-        public int CountLinesReader()
+        public static int CountLinesReader(string file)
         {
             int lineCounter = 0;
-            using (var reader = new StreamReader("symbols.dat"))
+            using (var reader = new StreamReader(file))
             {
                 while (reader.ReadLine() != null)
                 {
@@ -49,12 +49,13 @@ namespace SICXEA1
         {
             //  using (TextReader sr = File.OpenText("symbols.dat"))
             //  {
-            int linecounter = CountLinesReader();
+            string file = "Symbols.dat";
+            int linecounter = CountLinesReader(file);
                 string[] input = null;
                 string[] inputs = null;
                 string RF = null;
                 int val;
-            Console.WriteLine(linecounter);
+            
             for(int c =0; c < linecounter; c++)
             {
                 input = File.ReadAllLines("symbols.dat");

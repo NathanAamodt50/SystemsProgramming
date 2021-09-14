@@ -9,11 +9,27 @@ namespace SICXEA1
 {
     public class BST
     {
-        public static void searchtree()
+       
+        public static void Search(List L)
         {
-            using(StreamReader sr = File.OpenText(""))
+            string searchp = null;
+            using (StreamReader sr = File.OpenText("Test.txt"))
             {
-
+                
+                while((searchp = sr.ReadLine()) != null)
+                {
+                    for(int c = 0; c < 1; c++)
+                    {
+                        if(L.Table[c].Sym == searchp)
+                        {
+                            Console.WriteLine("Symbol Found:" +L.Table[c].Value +"\t" + L.Table[c].Sym + "\t" + L.Table[c].RF + "\t"+L.Table[c].MF);
+                        }
+                        else
+                        {
+                            Console.WriteLine("Symbol Not Found: " + searchp);
+                        }
+                    }
+                }
             }
         }
     }

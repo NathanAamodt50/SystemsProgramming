@@ -12,7 +12,9 @@ namespace SICXEA1
 
 
 
+
             View.ViewSym(L);
+            BST.Search(L);
         }
     }
 }
