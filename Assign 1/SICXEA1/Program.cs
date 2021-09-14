@@ -6,9 +6,13 @@ namespace SICXEA1
     {
         static void Main()
         {
-            int tableSize = 101;
-            List L = new List(tableSize);
+            
+            
+            List L = new List();
 
+
+
+            View.ViewSym(L);
         }
     }
 }
