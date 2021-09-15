@@ -1,4 +1,10 @@
-﻿using System;
+﻿/* Nathan Aamodt
+ * Systems Programming
+ * Assign 1
+ * This program will take symbol inputs from symbol.dat create a table using thoes inputs.
+ * Then it will search from Test.txt to search for symbols in the table.
+ */
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -14,21 +20,26 @@ namespace SICXEA1
         {
             string file = "Symbols.dat";
             Table = new Symbol[CountLinesReader(file)];
-            InitializeTable();
+            InitializeTable(file);
             CreateList();
         }
         public List(Symbol[] Soul)
         {
             Table = Soul;
         }
-
-        public void InitializeTable()
+        /*
+         * This function will initialize the table
+         */
+        public void InitializeTable(string file)
         {
-            for (int c = 0; c < Table.Length; c++)
+            for (int c = 0; c < CountLinesReader(file); c++)
             {
                 Table[c] = new Symbol();
             }
         }
+        /*
+         * This function uses the string of the file name to count how many lines are in the file to have an accurate count for the array of strings
+         */
         public static int CountLinesReader(string file)
         {
             int lineCounter = 0;
@@ -56,17 +67,17 @@ namespace SICXEA1
                 string RF = null;
                 int val;
             
-            for(int c =0; c < linecounter; c++)
+            for(int c = 0; c < linecounter; c++)
             {
                 input = File.ReadAllLines("symbols.dat");
                 string input2 = input[c];      
                 inputs = input2.Split(' ');
 
-                string test = inputs[c].Substring(0,1);
+                string test = inputs[1].Substring(0,1);
 
                 char testc = test.ToCharArray()[0];
 
-                if (testc >= 'A' && testc <= 'z')
+                if (testc <= 'z' && testc >= 'A')
                 {
                     if (testc == '{' || testc == 92 || testc == '}'|| testc == '^'|| testc == '_'|| testc == '`')
                     {
@@ -74,8 +85,6 @@ namespace SICXEA1
                     }
                     else
                     {
-                        for (int i = 0; i < linecounter; i++)
-                        {
                             val = Convert.ToInt32(inputs[0]);
                             Table[c].Value = val;
 
@@ -118,10 +127,10 @@ namespace SICXEA1
                                         Console.WriteLine("Not Valid\nFLag Set to False");
                                     }
                                     break;
-                           }
-                       }
+                           
+                             }
                         
-                   }
+                     }
 
 
 
@@ -129,7 +138,7 @@ namespace SICXEA1
                 } 
                 else
                 {
-                    Console.WriteLine("Symbol is Invalid, Moving onto Next\n");
+                    Console.WriteLine("Symbol is Invalid, Moving onto Next one\n");
                 }
            }
         }
