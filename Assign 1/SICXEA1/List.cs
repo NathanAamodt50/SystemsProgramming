@@ -41,14 +41,14 @@ namespace SICXEA1
                 return lineCounter;
             }
         }
+
+
         /*
-         * Create List ~ This function will create the table using inputs from the user for symbols, R&M Flags.
-         * Will then insert symbols into the array of symbols to later be listed and searched from using the Bianary search tree.
-         */
+* Create List ~ This function will create the table using inputs from the user for symbols, R&M Flags, and value
+* Will then insert symbols into the array of symbols to later be listed and searched from using the Bianary search tree.
+*/
         public void CreateList()
         {
-            //  using (TextReader sr = File.OpenText("symbols.dat"))
-            //  {
             string file = "Symbols.dat";
             int linecounter = CountLinesReader(file);
                 string[] input = null;
@@ -61,43 +61,56 @@ namespace SICXEA1
                 input = File.ReadAllLines("symbols.dat");
                 string input2 = input[c];      
                 inputs = input2.Split(' ');
-      
-                        for (int f = 0; f < linecounter; f++)
+
+                string test = inputs[c].Substring(0,1);
+
+                char testc = test.ToCharArray()[0];
+
+                if (testc >= 'A' && testc <= 'z')
+                {
+                    if (testc == '{' || testc == 92 || testc == '}'|| testc == '^'|| testc == '_'|| testc == '`')
+                    {
+                        Console.WriteLine("Symbol is Invalid, Moving onto Next\n");
+                    }
+                    else
+                    {
+                        for (int i = 0; i < linecounter; i++)
                         {
                             val = Convert.ToInt32(inputs[0]);
-                            Table[f].Value = val;
-                            Table[f].Sym = inputs[1];
+                            Table[c].Value = val;
+
+                            Table[c].Sym = inputs[1].Substring(0, 6);
                             RF = inputs[2];
                             switch (RF)
                             {
                                 case "T":
                                     {
-                                        Table[f].RF = 1;
+                                        Table[c].RF = 1;
                                     }
                                     break;
                                 case "F":
                                     {
-                                        Table[f].RF = 0;
+                                        Table[c].RF = 0;
                                     }
                                     break;
                                 case "0":
                                     {
-                                        Table[f].RF = 0;
+                                        Table[c].RF = 0;
                                     }
                                     break;
                                 case "1":
                                     {
-                                        Table[f].RF = 1;
+                                        Table[c].RF = 1;
                                     }
                                     break;
                                 case "True":
                                     {
-                                        Table[f].RF = 1;
+                                        Table[c].RF = 1;
                                     }
                                     break;
                                 case "False":
                                     {
-                                        Table[f].RF = 0;
+                                        Table[c].RF = 0;
                                     }
                                     break;
                                 default:
@@ -105,12 +118,19 @@ namespace SICXEA1
                                         Console.WriteLine("Not Valid\nFLag Set to False");
                                     }
                                     break;
-                            }
-                         
-                       
+                           }
+                       }
+                        
+                   }
 
-                        }
-                
+
+
+                    
+                } 
+                else
+                {
+                    Console.WriteLine("Symbol is Invalid, Moving onto Next\n");
+                }
            }
         }
 
