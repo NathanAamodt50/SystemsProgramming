@@ -13,11 +13,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\Natea\\Desktop\\SystemsProgramming-main\\Assign 1\\SICXEA1\\SICXEA1.csproj",
+      "projectUniqueName": "C:\\Users\\Natea\\Desktop\\SystemsProgramming-main\\Assign1NSA\\SICXEA1\\SICXEA1.csproj",
       "projectName": "SICXEA1",
-      "projectPath": "C:\\Users\\Natea\\Desktop\\SystemsProgramming-main\\Assign 1\\SICXEA1\\SICXEA1.csproj",
+      "projectPath": "C:\\Users\\Natea\\Desktop\\SystemsProgramming-main\\Assign1NSA\\SICXEA1\\SICXEA1.csproj",
       "packagesPath": "C:\\Users\\Natea\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\Natea\\Desktop\\SystemsProgramming-main\\Assign 1\\SICXEA1\\obj\\",
+      "outputPath": "C:\\Users\\Natea\\Desktop\\SystemsProgramming-main\\Assign1NSA\\SICXEA1\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\Natea\\AppData\\Roaming\\NuGet\\NuGet.Config",

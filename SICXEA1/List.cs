@@ -1,6 +1,7 @@
 ﻿/* Nathan Aamodt
  * Systems Programming
  * Assign 1
+ * Hamer
  * This program will take symbol inputs from symbol.dat create a table using thoes inputs.
  * Then it will search from Test.txt to search for symbols in the table.
  */
@@ -13,12 +14,15 @@ using System.IO;
 
 namespace SICXEA1
 {
+    //Class List
     //this class opens the symbols file, then it procceeds to initalize the table and fill the table with the inputed symbols
     //from the  file.
     public class List
     {
         public Symbol[] Table;
         //List() defines the table as well as calls in the functions we need to complete the table.
+        // no inputs
+        // no outputs
         public List()
         {
             string file = "Symbols.dat";
@@ -26,13 +30,16 @@ namespace SICXEA1
             InitializeTable(file);
             CreateList();
         }
-        //copy constructor
+        //List
+        //copy constructor of List
+        //Uses the input of the copy constructor for symbol
         public List(Symbol[] Soul)
         {
             Table = Soul;
         }
-        /*
+        /* Initalize Table
          * This function will initialize the table with the line reader to have an accurate mesure on table length
+         * input is the string with the file name in it to be called
          */
         public void InitializeTable(string file)
         {
@@ -41,8 +48,10 @@ namespace SICXEA1
                 Table[c] = new Symbol();
             }
         }
-        /*
+        /* CountLinesReader
          * This function uses the string of the file name to count how many lines are in the file to have an accurate count for the array of strings
+         * Requires the name of the file to be input so it can count the lines of the correct file
+         * this will return lineCounter, an int that stores how many lines are in the file
          */
         public static int CountLinesReader(string file)
         {
@@ -58,9 +67,10 @@ namespace SICXEA1
         }
 
 
-        /*
+/*
 * Create List ~ This function will create the table using inputs from the user for symbols, R&M Flags, and value
 * Will then insert symbols into the array of symbols to later be listed and searched from using the Bianary search tree.
+* No inputs, does most of the table creation and finding multiple values
 */
         public void CreateList()
         {
@@ -75,20 +85,20 @@ namespace SICXEA1
             {
                 input = File.ReadAllLines("symbols.dat");
                 string input2 = input[c];      
-                inputs = input2.Split(' ');
+                inputs = input2.Split(' ', StringSplitOptions.RemoveEmptyEntries);
 
                 string test = inputs[1].Substring(0,1);
 
                 char testc = test.ToCharArray()[0];
                 int leng = inputs[1].Length;
                 //this makes sure all symbols are within the bounds of a valid symbol described by the assignment
-                if (leng < 22)
+                if (leng < 21)
                 {
                     if (testc <= 'z' && testc >= 'A')
                     {
                         if (testc == '{' || testc == 92 || testc == '}' || testc == '^' || testc == '_' || testc == '`')
                         {
-                            Console.WriteLine("Symbol is Invalid, Moving onto Next\n");
+
                         }
                         else
                         {
@@ -107,10 +117,13 @@ namespace SICXEA1
 
                                 if (testsame == Table[f].Sym)
                                 {
+                                    
                                     Table[f].MF = 1;
+                                    /*
                                     Table[c].Sym = "This was a duplicate Symbol";
                                     Table[c].RF = 0;
                                     Table[c].Value = 0;
+                                    */
                                 }
                                 // If the symbol is unique this will throw all aspects into a spot on the table
                                 else
@@ -160,6 +173,16 @@ namespace SICXEA1
                                                 Table[c].RF = 0;
                                             }
                                             break;
+                                        case "true":
+                                            {
+                                                Table[c].RF = 1;
+                                            }
+                                            break;
+                                        case "false":
+                                            {
+                                                Table[c].RF = 0;
+                                            }
+                                            break;
                                         default:
                                             {
                                                 Console.WriteLine("Not Valid\nFLag Set to False");
@@ -175,13 +198,13 @@ namespace SICXEA1
                     }
                     else
                     {
-                        Console.WriteLine("Symbol is Invalid\n");
+
                     }
                 }
 
                 else
                 {
-                    Console.WriteLine("Symbol is Invalid, Too long Table will display blank space\n");
+
                 }
 
             }
